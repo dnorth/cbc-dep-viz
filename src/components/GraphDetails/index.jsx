@@ -17,7 +17,7 @@ const GraphDetails = () => {
           <tbody>
             <GraphRow title="Task Count" value={tasks.length} />
             <GraphRow title="Dependency Count" value={dependencies.length} />
-            <GraphRow title="Root Count" value={calculateRootCount(dependencies)} />
+            <GraphRow title="Root Count" value={calculateRootCount(tasks, dependencies)} />
             <GraphRow title="Max Depth" value={calculateMaxDepth(tasks, dependencies)} />
           </tbody>
         </table>
