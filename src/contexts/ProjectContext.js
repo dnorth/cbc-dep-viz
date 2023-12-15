@@ -12,7 +12,6 @@ export const ProjectProvider = ({ children }) => {
 
   useEffect(() => {
     const getProjects = async () => {
-      console.log('fetching projects...')
       const projectsRes = await api.fetchProjects();
       setProjects(projectsRes);
       setSelectedProject(projectsRes[0])

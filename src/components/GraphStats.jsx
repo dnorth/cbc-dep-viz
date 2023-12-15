@@ -1,4 +1,8 @@
+import { useProject } from "../hooks/useProject"
+
 const GraphStats = () => {
+  const { dependencies, tasks } = useProject()
+
   return (
     <>
       <h2>Graph Stats</h2>
@@ -6,11 +10,11 @@ const GraphStats = () => {
         <tbody>
           <tr>
             <td>Task Count</td>
-            <td>0</td>
+            <td>{tasks.length}</td>
           </tr>
           <tr>
             <td>Dependency Count</td>
-            <td>0</td>
+            <td>{dependencies.length}</td>
           </tr>
           <tr>
             <td>Root Count</td>

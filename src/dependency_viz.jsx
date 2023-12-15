@@ -6,7 +6,6 @@ import { ProjectProvider } from "./contexts/ProjectContext";
 import styles from "./dependency_viz.module.css";
 
 export const DependencyVisualization = () => {
-  console.log('dep render...')
   return (
     <ProjectProvider>
       <div className={styles.depVizContainer}>
