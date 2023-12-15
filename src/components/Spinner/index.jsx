@@ -5,7 +5,7 @@ import styles from './index.module.css'
 const Spinner = ({ small }) => <div className={classnames(styles.loader, { [styles.small]: small })}></div>;
 
 Spinner.propTypes = {
-  small: PropTypes.boolean
+  small: PropTypes.bool
 }
 
 export default Spinner;

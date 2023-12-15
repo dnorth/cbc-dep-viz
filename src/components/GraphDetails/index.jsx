@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Spinner from "../Spinner"
+import { calculateRootCount, calculateMaxDepth } from '../../utils/graphDetails'
 
 import { useProject } from "../../hooks/useProject"
 
@@ -16,8 +17,8 @@ const GraphDetails = () => {
           <tbody>
             <GraphRow title="Task Count" value={tasks.length} />
             <GraphRow title="Dependency Count" value={dependencies.length} />
-            <GraphRow title="Root Count" value={0} />
-            <GraphRow title="Max Depth" value={0} />
+            <GraphRow title="Root Count" value={calculateRootCount(tasks, dependencies)} />
+            <GraphRow title="Max Depth" value={calculateMaxDepth(tasks, dependencies)} />
           </tbody>
         </table>
       </div>
@@ -31,7 +32,9 @@ const GraphRow = ({ title, value }) => {
   return (
     <tr className={styles.row}>
       <td>{`${title}:`}</td>
-      { areDetailsLoading ? <Spinner small /> : <td>{value}</td> }
+      <td>
+        { areDetailsLoading ? <Spinner small /> : value }
+      </td>
     </tr>
   )
 }
