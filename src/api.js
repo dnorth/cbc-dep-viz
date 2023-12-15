@@ -1,4 +1,3 @@
-
 const api = {
   fetchProjects: async () => {
     const response = await fetch("api/projects")
