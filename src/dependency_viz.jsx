@@ -4,6 +4,7 @@ import GraphStats from "./components/GraphStats";
 
 import styles from "./dependency_viz.module.css";
 import { useProject } from "./hooks/useProject";
+import Spinner from "./components/Spinner";
 
 export const DependencyVisualization = () => {
   const { areProjectsLoading } = useProject()
@@ -12,7 +13,7 @@ export const DependencyVisualization = () => {
     <div className={styles.depVizContainer}>
       <h1>Project Dependency Info</h1>
       {
-        areProjectsLoading ? 'Loading...' : (
+        areProjectsLoading ? <Spinner /> : (
           <>
             <ProjectInput />
             <GraphStats />
