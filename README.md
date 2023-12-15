@@ -1,3 +1,10 @@
+# How to run
+
+1. Clone the repository locally
+2. Run `yarn`
+3. Run `yarn start`
+4. To run the tests, run `yarn test`
+
 # Dependency Graph visualization
 
 A properly formed construction schedule can be described as an acyclic
