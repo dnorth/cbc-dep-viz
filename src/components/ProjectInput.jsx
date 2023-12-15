@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react"
+import api from '../api'
+
 const ProjectInput = () => {
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    const getProjects = async () => {
+      const projectsRes = await api.fetchProjects()
+      setProjects(projectsRes)
+    }
+
+    getProjects()
+  }, [])
+
   return (
     <select>
-      <option/>
-      <option value="pid1">Placeholder Project Name 1</option>
-      <option value="pid2">Placeholder Project Name 2</option>
+      {
+        projects.map((project) => (
+          <option value={project.id} key={project.id}>{project.name}</option>
+        ))
+      }
     </select>
   )
 }
