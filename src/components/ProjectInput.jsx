@@ -1,17 +1,7 @@
-import { useEffect, useState } from "react"
-import api from '../api'
+import { useProject } from "../hooks/useProject"
 
 const ProjectInput = () => {
-  const [projects, setProjects] = useState([])
-
-  useEffect(() => {
-    const getProjects = async () => {
-      const projectsRes = await api.fetchProjects()
-      setProjects(projectsRes)
-    }
-
-    getProjects()
-  }, [])
+  const { projects } = useProject()
 
   return (
     <select>

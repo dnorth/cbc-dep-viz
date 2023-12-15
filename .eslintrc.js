@@ -9,7 +9,8 @@ module.exports = {
     "react/react-in-jsx-scope": "off"
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true
   },
   settings: {
     react: {
