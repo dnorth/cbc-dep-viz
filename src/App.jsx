@@ -1,5 +1,5 @@
 import React from 'react';
-import {DependencyVisualization} from './dependency_viz';
+import DependencyVisualization from './pages/DependencyVizualization';
 import { ProjectProvider } from "./contexts/ProjectContext";
 
 import './data'

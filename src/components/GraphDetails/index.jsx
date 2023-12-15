@@ -5,20 +5,22 @@ import { useProject } from "../../hooks/useProject"
 
 import styles from './index.module.css'
 
-const GraphStats = () => {
+const GraphDetails = () => {
   const { dependencies, tasks } = useProject()
 
   return (
     <>
       <h2>Graph Details</h2>
-      <table>
-        <tbody>
-          <GraphRow title="Task Count" value={tasks.length} />
-          <GraphRow title="Dependency Count" value={dependencies.length} />
-          <GraphRow title="Root Count" value={0} />
-          <GraphRow title="Max Depth" value={0} />
-        </tbody>
-      </table>
+      <div className={styles.graphDetails}>
+        <table>
+          <tbody>
+            <GraphRow title="Task Count" value={tasks.length} />
+            <GraphRow title="Dependency Count" value={dependencies.length} />
+            <GraphRow title="Root Count" value={0} />
+            <GraphRow title="Max Depth" value={0} />
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }
@@ -39,4 +41,4 @@ GraphRow.propTypes = {
   value: PropTypes.number
 }
 
-export default GraphStats
+export default GraphDetails
