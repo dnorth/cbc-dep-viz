@@ -1,39 +1,27 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext } from 'react';
 import PropTypes from 'prop-types'
-import api from '../api';
+import { useFetchProjects } from '../hooks/useFetchProjects';
+import { useFetchProjectDetails } from '../hooks/useFetchProjectDetails';
 
 export const ProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
-  const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [tasks, setTasks] = useState([]);
-  const [dependencies, setDependencies] = useState([]);
+  const { projects, selectedProject, setSelectedProject, isLoading: isProjectsLoading, error: projectsError } = useFetchProjects();
 
-  useEffect(() => {
-    const getProjects = async () => {
-      const projectsRes = await api.fetchProjects();
-      setProjects(projectsRes);
-      setSelectedProject(projectsRes[0])
-    };
-
-    getProjects();
-  }, []);
-
-  useEffect(() => {
-    const fetchProjectDetails = async () => {
-      if (selectedProject) {
-        const [tasksRes, depsRes] = await Promise.all([api.fetchTasks(selectedProject.id), api.fetchDependencies(selectedProject.id)])
-        setTasks(tasksRes);
-        setDependencies(depsRes);
-      }
-    };
-
-    fetchProjectDetails();
-  }, [selectedProject]);
+  const { tasks, dependencies, isLoading: isDetailsLoading, error: detailsError } = useFetchProjectDetails(selectedProject);
 
   return (
-    <ProjectContext.Provider value={{ projects, selectedProject, tasks, dependencies, setSelectedProject }}>
+    <ProjectContext.Provider value={{
+      projects,
+      selectedProject,
+      setSelectedProject,
+      tasks,
+      dependencies,
+      isProjectsLoading,
+      projectsError,
+      isDetailsLoading,
+      detailsError
+    }}>
       {children}
     </ProjectContext.Provider>
   );
