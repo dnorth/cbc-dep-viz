@@ -6,9 +6,9 @@ import { useFetchProjectDetails } from '../hooks/useFetchProjectDetails';
 export const ProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
-  const { projects, selectedProject, setSelectedProject, isLoading: isProjectsLoading, error: projectsError } = useFetchProjects();
+  const { projects, selectedProject, setSelectedProject, isLoading: areProjectsLoading, error: projectsError } = useFetchProjects();
 
-  const { tasks, dependencies, isLoading: isDetailsLoading, error: detailsError } = useFetchProjectDetails(selectedProject);
+  const { tasks, dependencies, isLoading: areDetailsLoading, error: detailsError } = useFetchProjectDetails(selectedProject);
 
   return (
     <ProjectContext.Provider value={{
@@ -17,9 +17,9 @@ export const ProjectProvider = ({ children }) => {
       setSelectedProject,
       tasks,
       dependencies,
-      isProjectsLoading,
+      areProjectsLoading,
       projectsError,
-      isDetailsLoading,
+      areDetailsLoading,
       detailsError
     }}>
       {children}
